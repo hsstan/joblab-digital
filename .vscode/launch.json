@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DigitalApplication<digital>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "org.joblab.digital.DigitalApplication",
+            "projectName": "digital",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

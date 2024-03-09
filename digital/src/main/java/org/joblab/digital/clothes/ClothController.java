@@ -1,4 +1,4 @@
-package org.joblab.digital.cars;
+package org.joblab.digital.clothes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,19 +8,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController(value = "CarsController")
-public class CarsController {
+@RestController(value = "ClothController")
+public class ClothController {
 
     @Autowired
-    CarService carService;
+    ClothService clothService;
 
-    @GetMapping("/cars")
-    public ResponseEntity<List<Car>> getCars(){
+    @GetMapping("/clothes")
+    public ResponseEntity<List<Cloth>> getClothes(){
 
-        List<Car> retList = new ArrayList<>();
+        List<Cloth> retList = new ArrayList<>();
         
         for(int i = 0; i < 15; i++){
-            retList.add(carService.getRandomCar());
+            retList.add(clothService.getRandomCloth());
         }
 
         return ResponseEntity.ok(retList);
