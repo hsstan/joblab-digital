@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joblab - Modulo Digital</title>
 </head>
+
 <body>
     <h1>Benvenuti al modulo Digital del JobLab Accenture</h1>
+    <p> date un occhio alla console, per vedere i dati da usare per creare il sito</p>
     <script type="module">
-        import fetch from '/js/fetch.js';
+        import fetch from './js/fetch.js';
         console.log(await fetch.getTechs());
+        console.log(await fetch.getClothes());
+        console.log(await fetch.getCars());
     </script>
 </body>
+
 </html>

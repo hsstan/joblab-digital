@@ -1,16 +1,22 @@
 async function getTechs(){
-    return fetch("/techs").then(r => r.body)
+    const response =  await fetch("/techs");
+    const json = await response.json();
+    return json;
 }
 
-function getClothes(){
-
+async function getClothes(){
+    const response =  await fetch("/clothes");
+    const json = await response.json();
+    return json;
 }
 
-function getCars(){
-
+async function getCars(){
+    const response =  await fetch("/cars");
+    const json = await response.json();
+    return json;
 }
 
-module.exports = {
+export default {
     getTechs,
     getClothes,
     getCars
