@@ -1,4 +1,4 @@
-package org.joblab.digital.clothes;
+package org.joblab.digital.techs;
 
 import java.net.URI;
 import java.util.Arrays;
@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 import com.github.javafaker.Faker;
 
 @Service
-public class ClothService {
+public class TechService {
 
     private Faker faker = new Faker(new Locale("it-IT"));
-    private List<String> types = Arrays.asList("shirt","skirt","gloves","trousers","jeans","belt","shoes");
+    private List<String> techs = Arrays.asList("computer","laptop","notebook","keyboard","mouse","screen","desktop");
 
     private String randomType(){
         Random r = new Random();
-        return types.get(r.nextInt(types.size()));
+        return techs.get(r.nextInt(techs.size()));
     }
 
     private String composeRandomName(String type){
@@ -29,8 +29,8 @@ public class ClothService {
         );
     }
 
-    public Cloth getRandomCloth(){
-        Cloth c = new Cloth();
+    public Tech getRandomTechs(){
+        Tech c = new Tech();
         c.setId(UUID.randomUUID());
 
         String type = randomType();
@@ -39,13 +39,12 @@ public class ClothService {
         c.setShortDescription(faker.lorem().paragraph());
         c.setLongDescription(String.join("\n", faker.lorem().paragraphs(2)));
         
-        c.setPrice(faker.number().numberBetween(10L, 150L));
+        c.setPrice(faker.number().numberBetween(150L, 500L));
 
         URI imageUri = URI.create(
-            String.format("https://loremflickr.com/%s/%s/clothes,%s",
+            String.format("https://picsum.photos/%s/%s",
                 faker.number().numberBetween(300, 400),
-                faker.number().numberBetween(300, 400),
-                type
+                faker.number().numberBetween(300, 400)
             )
         );
         c.setImage(imageUri);

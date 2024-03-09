@@ -1,4 +1,4 @@
-package org.joblab.digital.cars;
+package org.joblab.digital.techs;
 
 import java.net.URI;
 import java.util.UUID;
@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode
-public class Car {
+public class Tech {
     UUID id;
     String name;
     String shortDescription;

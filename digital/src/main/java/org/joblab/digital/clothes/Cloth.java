@@ -13,6 +13,6 @@ public class Cloth {
     String name;
     String shortDescription;
     String longDescription;
-    int price;
+    long price;
     URI image;
 }
