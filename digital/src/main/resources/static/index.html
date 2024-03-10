@@ -5,16 +5,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joblab - Modulo Digital</title>
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
     <h1>Benvenuti al modulo Digital del JobLab Accenture</h1>
-    <p> date un occhio alla console, per vedere i dati da usare per creare il sito</p>
+    <p>cliccate sui pulsanti sotto per vedere i dati restituiti dal back-end</p>
+
+    <details id="btnCars">
+        <summary>Auto in vendita</summary>
+        <pre><code id="resultCars"></code>
+        </pre>
+    </details>
+
+    <details id="btnClothes">
+        <summary>Vestiti in vendita</summary>
+        <pre><code id="resultClothes"></code>
+        </pre>
+    </details>
+
+    <details id="btnTechs">
+        <summary>Gadget in vendita</summary>
+        <pre><code id="resultTechs"></code>
+        </pre>
+    </details>
+
+    <p>sotto invece alcuni suggerimenti su come creare</p>
+    <details>
+        <summary>una barra di navigazione</summary>
+        <p><a href="https://www.w3schools.com/howto/howto_js_topnav.asp"> Superiore (Top Navigation)</a></p>
+        <p><a href="https://www.w3schools.com/howto/howto_js_sidenav.asp"> laterale (Side Navigation)</a></p>
+    </details>
+    <details>
+        <summary>una tabella</summary>
+        <p><a href="https://www.w3schools.com/tags/tag_table.asp"> Tabella Semplice</a></p>
+        <p><a href="https://www.w3schools.com/tags/tag_tbody.asp"> Con distinzione di stili e comportamenti per Header,
+                Body e Footer </a></p>
+    </details>
+    <details>
+        <summary>una dialog di dettagli</summary>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog">Riferimento MDN</a></p>
+    </details>
     <script type="module">
         import fetch from './js/fetch.js';
-        console.log(await fetch.getTechs());
-        console.log(await fetch.getClothes());
-        console.log(await fetch.getCars());
+
+        /***
+         * Funzione che riporta l'output di un servizio formattato in un code Element
+         * @Parameters:
+         * f: la funzione che restituisce l'output json del servizio
+         * idCode: l'id dell'elemento in cui incollare il contenuto
+         */
+        async function showDataInCode(f, idCode) {
+            const data = await f();
+            const codeElement = document.getElementById(idCode);
+            codeElement.innerHTML = JSON.stringify(data, null, 4);
+        }
+
+        /***
+         * Funzione che aggiunge all'evento di apertura la chiamata al servizio del back-end
+         * @Parameters:
+         * type => il tipo di output da visualizzare, è il riferimento per:
+         *  * la funzione (getXXXX)
+         *  * l'elemento details (btnXXXX) a cui agganciare l'evento
+         *  * l'elemento code (resultXXXX) in cui incollare il risultato
+         */
+        async function addToggleEventToDetail(type) {
+            const detailElement = document.getElementById(`btn${type}`);
+            detailElement.addEventListener("toggle", (event) => {
+                if (detailElement.open) {
+                    showDataInCode(fetch[`get${type}`], `result${type}`)
+                }
+            });
+        }
+
+        //Applico la logica di chiamata ed esposizione per tutti i 3 tipi di servizio che ho a disposizione
+        ["Cars", "Techs", "Clothes"].forEach(type => addToggleEventToDetail(type));
     </script>
 </body>
 

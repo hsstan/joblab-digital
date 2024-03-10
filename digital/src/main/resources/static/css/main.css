@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    max-width: 100wv;
+    max-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+}
+
+body{
+    margin:auto;
+    max-width: 1000px;
+}
+
+details {
+    padding: 10px;
+    background-color: #e4eaef;
+    border-radius: 5px;
+    max-width: 90%;
+    margin: 0.5em auto;
+}
+
+details>*:not(summary) {
+    margin: 0.75em 0 0 0;
+}
+
+pre {
+    color: white;
+    background: #30353b;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+details code {
+    font-size: 1.1em;
+    max-width: 100wv;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: pre-wrap;
+    /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    /* Internet Explorer 5.5+ */
+}
